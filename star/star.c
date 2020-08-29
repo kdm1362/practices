@@ -4,7 +4,7 @@
 // triangle stars
 //
 	// each 1 stars are needs 2 spaces
-	// the line size is following this formula : buffer = lines*lines + (1+lines)*lines/2
+	// the line size is following this formula : size = lines*lines + (1+lines)*lines/2
 	// n is current row, m is input number (maximum)
 	//    *		5
 	//   * *	6
