@@ -50,7 +50,10 @@ int main(int argc, char** argv){
 
 	// determine buffer size
 	size = lines*lines + (1+lines)*lines/2;
-	buffer = malloc(size);
+	// actually char type is usually 1byte so useless code
+	size = size*sizeof(char);
+
+	buffer = (char*)malloc(size);
 
 	// allocation buffer
 	if(buffer==NULL){
@@ -82,6 +85,9 @@ int main(int argc, char** argv){
 	puts(buffer);
 
 	seperate(SEP);
+	printf("%p\n", buffer);
+	free(buffer);
+	printf("%p\n", buffer);
 
 	return 0;
 }
