@@ -54,6 +54,8 @@ int main(int argc, char** argv){
 	size = size*sizeof(char);
 
 	buffer = (char*)malloc(size);
+	// pointer test
+	printf("%p\n", buffer);
 
 	// allocation buffer
 	if(buffer==NULL){
@@ -80,14 +82,16 @@ int main(int argc, char** argv){
 
 	// put null charactor for c string
 	*niddle = '\0';
+	niddle = NULL;
 	
 	// print triangle
 	puts(buffer);
 
 	seperate(SEP);
 	printf("%p\n", buffer);
+	fflush(stdout);
 	free(buffer);
-	printf("%p\n", buffer);
+	buffer = NULL;
 
 	return 0;
 }
