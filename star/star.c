@@ -4,17 +4,21 @@
 // triangle stars
 //
 	// each 1 stars are needs 2 spaces
-	// the line size is following this formula : size = lines*lines + (1+lines)*lines/2
-	// n is current row, m is input number (maximum)
+	//
+	// the buffer size is following this formula :
+	// spaces = n(n-1)/2
+	// stars (with spaces) = n(n+1)
+	// control character = n+1
+	//
 	//    *		5
 	//   * *	6
 	//  * * *	7
 	// * * * *	8
-	// size = m+n (one base with null charactor)
-	// full size of triangle = m*m + (1+m)*m/2 ,,, 16+10=26
+	// full size of triangle = 4*3/2 + 4*5 + 5 = 31
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <malloc.h>
 
 #define SEP 10
 
@@ -48,8 +52,8 @@ int main(int argc, char** argv){
 	// initialize message
 	seperate(SEP);
 
-	// determine buffer size
-	size = lines*lines + (1+lines)*lines/2;
+	// determine buffer size plus null character
+	size = lines*(lines-1)/2 + lines*(lines+1) + lines+1;
 	// actually char type is usually 1byte so useless code
 	size = size*sizeof(char);
 
@@ -88,7 +92,7 @@ int main(int argc, char** argv){
 	puts(buffer);
 
 	seperate(SEP);
-	printf("%p\n", buffer);
+	printf("%d\n", size);
 	fflush(stdout);
 	free(buffer);
 	buffer = NULL;

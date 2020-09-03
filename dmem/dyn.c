@@ -16,6 +16,10 @@ int main(int argc, char **argv){
 		printf("\n%p assigned %dbyte\n", point, flag);
 		fflush(stdout);
 
+		for(int i=0; i<flag; i++){
+			*(point+i)=0;
+		}
+
 		free(point);
 		printf("free success\n\n");
 
